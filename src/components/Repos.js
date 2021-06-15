@@ -20,8 +20,8 @@ const Repos = () => {
         }
         return total;
     }, {});
-    const languageData = [];
-    const starData = [];
+    let languageData = [];
+    let starData = [];
     for (const key in languages) {
         languageData.push({
             label: key,
@@ -32,8 +32,8 @@ const Repos = () => {
           value: languages[key].stars.toString(),
         });
     }
-    languageData.sort((a, b) => b.value - a.value).slice(0, 5); // top 5
-    starData.sort((a, b) => b.stars - a.stars).slice(0, 5);
+    languageData = languageData.sort((a, b) => b.value - a.value).slice(0, 5); // top 5
+    starData = starData.sort((a, b) => b.stars - a.stars).slice(0, 5);
 
     let {stars, forks} = repos.reduce((total, item)=>{ // only record one repo with the same stars
       const {name, stargazers_count, forks} = item;
